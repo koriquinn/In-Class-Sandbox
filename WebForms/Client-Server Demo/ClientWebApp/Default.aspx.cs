@@ -11,7 +11,12 @@ namespace ClientWebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!IsPostBack)
+            {
+                var controller = new ServerSide.BLL.CodeDemoController();
+                CodeDemoGridView.DataSource = controller.ListAllDemos();
+                CodeDemoGridView.DataBind();
+            }
         }
     }
 }
